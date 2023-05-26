@@ -3,7 +3,7 @@
 - Juego de Arcade
 ## Autores:
 - Matias Saravia
-## Link de gh-pages: [Link de la página]
+## Link de gh-pages: [Link de la página](https://ucc-labcompu2.github.io/proyecto2023-msaravia/Juego/index.html)
 
 ## Tecnologias implementadas:
 - Google
