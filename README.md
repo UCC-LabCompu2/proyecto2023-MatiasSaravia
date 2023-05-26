@@ -1,10 +1,11 @@
 # Información del proyecto
 ## Título del proyecto:
 - Juego de Arcade
-## Autores:
+## Autor:
 - Matias Saravia
-## Link de gh-pages: [Link de la página](https://ucc-labcompu2.github.io/proyecto2023-msaravia/Juego/index.html)
-
+## Link de gh-pages: [Link de la página](https://ucc-labcompu2.github.io/proyecto2023-MatiaSaravia/Juego/index.html)
+## Contenido de la página:
+- Vistaso a una pagina que representa a un juego clasico de los arcade, con el juego elegido, sus controles, informacion sobre la historia y creacion del juego
 ## Tecnologias implementadas:
 - Google
 - W3schools
