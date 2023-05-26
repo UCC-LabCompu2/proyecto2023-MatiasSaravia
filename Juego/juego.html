@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arcade</title>
+    <meta name="descripcion" content="Juego de Arcade">
+    <meta name="palabras clave" content="Entretenimiento, Juego">
+    <meta name="autor" content="Matias Saravia">
+    <Link rel="Stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="imagenes/arcade.png">
+</head>
+
+<body>
+<header class="logo">
+    <button class="boton2" type="button"><a href="index.html"><img class="icono" src="imagenes/icon-vol.png" alt="i1"></a>
+    </button>
+    <h1 class="titulo2">PAC-MAN</h1>
+    <img class="pacman" src="imagenes/pacman1.png" alt="p1">
+    <img class="moneda" src="imagenes/punt.png" alt="m1">
+    <img class="moneda" src="imagenes/punt.png" alt="m2">
+    <img class="moneda" src="imagenes/punt.png" alt="m3">
+    <img class="fantasma" src="imagenes/fant1.png" alt="f1">
+    <img class="fantasma" src="imagenes/fant2.png" alt="f2">
+    <img class="fantasma" src="imagenes/fant3.png" alt="f3">
+    <img class="fantasma" src="imagenes/fant4.png" alt="f4">
+</header>
+<section>
+    <div class="juego">
+        <p>
+            <span>Puntos: </span><span id="C_puntos">0</span>
+        </p>
+        <canvas></canvas>
+        <script src="juego.js"></script>
+    </div>
+</section>
+
+</body>
+</html>

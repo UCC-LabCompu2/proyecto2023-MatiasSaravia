@@ -1,0 +1,175 @@
+html, body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-image: url("imagenes/fondoo.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-family: 'Paytone One', sans-serif;
+}
+
+.logo {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    color: #ffff00;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px #9700ff;
+
+}
+.titulo{
+    text-align: center;
+    transition: 1s;
+}
+.titulo2{
+    margin-right: 80px;
+    text-align: center;
+    transition: 1s;
+}
+.titulo:hover{
+    font-size: xxx-large;
+    cursor: pointer;
+}
+.menu {
+    width: 500px;
+    height: 500px;
+    background-image: linear-gradient(#11002f, #190083);
+    margin: auto;
+    text-align: center;
+    border: 8px solid #070703;
+    border-radius: 50px;
+}
+.fantasma{
+    width: 50px;
+    height: 50px;
+}
+.pacman{
+    width: 50px;
+    height: 50px;
+}
+.moneda{
+    margin-bottom: 15px;
+    width: 20px;
+    height: 20px;
+}
+.icono{
+    width: 30px;
+    height: 30px;
+}
+
+.flechas{
+    padding-left: 25px;
+    float: left;
+    width: 40px;
+    height: 40px;
+    transition: 1s;
+}
+.flechas:hover{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.boton {
+    padding: 10px 80px 10px 80px;
+    margin: 2em auto 0 auto;
+    background-color: black;
+    border: 4px solid #000000;
+    color: #ffffff;
+    font-size: 1.2em;
+    border-radius: 70px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition: 1s;
+
+
+;
+}
+.boton2{
+    float: left;
+    padding: 5px 20px 5px 20px;
+    display: inline-block;
+    margin:0;
+    background-color: #6c6c6c;
+    border: 2px solid #000000;
+    color: #ffffff;
+    border-radius: 100px;
+    transition: 1s;
+}
+
+
+.boton:hover, .boton2:hover{
+    cursor: pointer;
+    background-image: radial-gradient(#ae40ff, #3b0a65, #000000 );
+    padding: 10px 100px 10px 100px;
+    box-shadow: 0 8px 16px 0 rgb(151, 0, 255), 0 6px 20px 0 rgb(151, 0, 255);
+}
+.boton2:hover {
+    padding: 10px 20px 10px 20px;
+}
+a{
+    color: white;
+}
+.link {
+    color: #000000;
+    transition: 1s;
+}
+.link:hover{
+    font-size: larger;
+}
+h2{
+    font-size: xx-large;
+    color: #ffffff;
+}
+h3 {
+    font-size: x-large;
+    color: #ffffff;
+    margin-top: 20px;
+    padding-right: 40px;
+}
+h4 {
+    padding-top:0;
+    padding-right: 100px;
+}
+.inf {
+    padding-top: 0;
+}
+p {
+    padding-top:1px;
+    color: #ffffff;
+    margin-top: 1px;
+}
+
+.juego {
+    width: 680px;
+    height: 700px;
+    background-color: black;
+    text-align: center;
+    margin: -50px auto auto;
+}
+
+#autor {
+    text-align: center;
+    padding-top:10px;
+    color: rgba(255, 255, 255, 0.53);
+    font-size: 12px;
+    margin-top: 1%;
+}
+@media(max-width: 950px) {
+    .menu{
+        width: 350px;
+        height: 500px;
+        margin: auto;
+        text-align: center;
+    }
+    .boton{
+        padding: 10px 45px 10px 45px;
+    }
+    .boton:hover{
+        padding: 10px 55px 10px 55px;
+    }
+    body{
+        background-size: 100% 100%;
+    }
+
+}
