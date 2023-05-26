@@ -1,6 +1,25 @@
-# proyecto2023
-Estructura de Proyecto Lab de Compu II - 2023
+# Información del proyecto
+## Título del proyecto:
+- Juego de Arcade
+## Autores:
+- Matias Saravia
+## Link de gh-pages: [Link de la página]
 
+## Tecnologias implementadas:
+- Google
+- W3schools
+- Chatgpt
+- Github
+- Youtube
+- Canva
+- faticon
+- WebStorm
+- Html
+- Css
+- Javascript
+
+# proyecto2023
+Estructura de Proyecto Laboratorio de Computo II - 2023
 ## Requisitos del Primer Parcial
 
 ### Sobre el Repositorio
