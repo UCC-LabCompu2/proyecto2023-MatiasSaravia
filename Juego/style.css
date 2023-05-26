@@ -7,15 +7,16 @@ html, body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    font-family: 'Paytone One', sans-serif;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .logo {
+
     text-align: center;
     margin-top: 10px;
     margin-bottom: 40px;
     color: #ffff00;
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px #9700ff;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 3px 3px 0 white;
 
 }
 .titulo{
@@ -30,6 +31,7 @@ html, body {
 .titulo:hover{
     font-size: xxx-large;
     cursor: pointer;
+
 }
 .menu {
     width: 500px;
@@ -39,6 +41,7 @@ html, body {
     text-align: center;
     border: 8px solid #070703;
     border-radius: 50px;
+
 }
 .fantasma{
     width: 50px;
@@ -57,7 +60,9 @@ html, body {
     width: 30px;
     height: 30px;
 }
-
+.ctl{
+    margin-bottom: 40px;
+}
 .flechas{
     padding-left: 25px;
     float: left;
@@ -72,13 +77,14 @@ html, body {
 }
 
 .boton {
-    padding: 10px 80px 10px 80px;
+    padding: 10px 50px 10px 50px;
     margin: 2em auto 0 auto;
     background-color: black;
     border: 4px solid #000000;
     color: #ffffff;
     font-size: 1.2em;
     border-radius: 70px;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 3px 3px 0 white;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     transition: 1s;
 
@@ -101,25 +107,29 @@ html, body {
 .boton:hover, .boton2:hover{
     cursor: pointer;
     background-image: radial-gradient(#ae40ff, #3b0a65, #000000 );
-    padding: 10px 100px 10px 100px;
+    padding: 10px 60px 10px 60px;
     box-shadow: 0 8px 16px 0 rgb(151, 0, 255), 0 6px 20px 0 rgb(151, 0, 255);
 }
 .boton2:hover {
     padding: 10px 20px 10px 20px;
 }
 a{
+    text-decoration: none;
     color: white;
 }
 .link {
     color: #000000;
     transition: 1s;
+    text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff, 3px 3px 0 #ffffff;
 }
 .link:hover{
     font-size: larger;
 }
 h2{
+    font-family: 'Press Start 2P', cursive;
     font-size: xx-large;
     color: #ffffff;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 3px 3px 0 white;
 }
 h3 {
     font-size: x-large;
@@ -132,6 +142,7 @@ h4 {
     padding-right: 100px;
 }
 .inf {
+    margin: auto 15px auto 15px;
     padding-top: 0;
 }
 p {
@@ -145,7 +156,7 @@ p {
     height: 700px;
     background-color: black;
     text-align: center;
-    margin: -50px auto auto;
+    margin: -40px auto auto;
 }
 
 #autor {
@@ -163,13 +174,19 @@ p {
         text-align: center;
     }
     .boton{
-        padding: 10px 45px 10px 45px;
+        padding: 10px 25px 10px 25px;
     }
     .boton:hover{
-        padding: 10px 55px 10px 55px;
+        padding: 10px 30px 10px 30px;
     }
     body{
         background-size: 100% 100%;
+    }
+    h2{
+        font-size: x-large;
+    }
+    p{
+        font-size: smaller;
     }
 
 }
