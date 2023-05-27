@@ -1,9 +1,9 @@
 const canvas = document.querySelector('canvas')
+canvas.height = 700;
+canvas.width = 680;
 const c2d = canvas.getContext('2d');
 const C_puntos = document.querySelector('#C_puntos')
 
-canvas.width = 680;
-canvas.height = 700;
 class Pacman {
     constructor({posicion, velocidad}) {
         this.cuerpo = 12
@@ -12,7 +12,7 @@ class Pacman {
     }
     Dibujar() {
         c2d.beginPath()
-        c2d.arc(this.posicion.x, this.posicion.y, this.cuerpo, 0, Math.PI * 2)
+        c2d.arc(this.posicion.x, this.posicion.y, this.cuerpo, 0, Math.PI*2 )
         c2d.fillStyle = '#ffe600'
         c2d.fill()
         c2d.closePath()
@@ -30,15 +30,18 @@ class Fantasma {
         this.velocidad = velocidad
         this.Colisiones_anteriores = []
     }
-    Dibujar() {
+    Dibujar2() {
         c2d.beginPath()
         c2d.arc(this.posicion.x, this.posicion.y, this.cuerpo, 0, Math.PI * 2)
+        c2d.arc(this.posicion.x+6, this.posicion.y+11, 6, 0, Math.PI * 2)
+        c2d.arc(this.posicion.x-6, this.posicion.y+11, 6, 0, Math.PI * 2)
         c2d.fillStyle = '#00dcdc'
+        c2d.fillRect(this.posicion.x-12, this.posicion.y,24,10)
         c2d.fill()
         c2d.closePath()
     }
     actualizar() {
-        this.Dibujar()
+        this.Dibujar2()
         this.posicion.x += this.velocidad.x
         this.posicion.y += this.velocidad.y
     }
@@ -48,10 +51,10 @@ class Monedas {
         this.cuerpo = 5
         this.posicion = posicion
     }
-    Dibujar() {
+    Dibujar3() {
         c2d.beginPath()
         c2d.arc(this.posicion.x, this.posicion.y, this.cuerpo, 0, Math.PI * 2)
-        c2d.fillStyle = 'rgba(255,255,255,0.62)'
+        c2d.fillStyle = 'rgb(255,183,0)'
         c2d.fill()
         c2d.closePath()
     }
@@ -65,9 +68,12 @@ class Paredes {
         this.width = 40
         this.height = 40
     }
-    Dibujar() {
+    Dibujar4() {
+        c2d.lineWidth=4
         c2d.fillStyle = '#190083'
         c2d.fillRect(this.posicion.x, this.posicion.y, this.width, this.height)
+        c2d.strokeStyle = '#9700ff'
+        c2d.strokeRect(this.posicion.x, this.posicion.y, this.width, this.height)
     }
 }
 /**
@@ -226,8 +232,8 @@ addEventListener('keyup', ({key}) => {
 /**
  * Detecta cuando un circulo choca contra una pared
  * @method circulo_colisiona
- * @param {int} posicion, velocidad y cuerpo
- * @param {int} posicion, alto y ancho
+ * @param {int} posicion, velocidad y cuerpo - posicion: posicion del circulo - velocidad: rapidez del circulo - cuerpo: tamaño del circulo
+ * @param {int} posicion, alto y ancho - posicion: posicion de las paredes - alto y ancho: tamaño del cuadrado
  * @return Devuelve contra que pared choco el circulo
  */
 function circulo_colisiona({circulo, cuadrado}) {
@@ -319,7 +325,7 @@ function animacion() {
      * @method moneda
      */
     moneda.forEach((monedas, i) => {
-        monedas.Dibujar()
+        monedas.Dibujar3()
         if (Math.hypot(monedas.posicion.x - pacman.posicion.x,
                 monedas.posicion.y - pacman.posicion.y) < monedas.cuerpo + pacman.cuerpo) {
             moneda.splice(i, 1)
@@ -333,7 +339,7 @@ function animacion() {
      * @method paredes
      */
     paredes.forEach((Paredes) => {
-        Paredes.Dibujar()
+        Paredes.Dibujar4()
         if (circulo_colisiona({
             circulo: pacman,
             cuadrado: Paredes
