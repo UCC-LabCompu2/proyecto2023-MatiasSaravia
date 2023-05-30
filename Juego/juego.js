@@ -5,17 +5,28 @@ const c2d = canvas.getContext('2d');
 const C_puntos = document.querySelector('#C_puntos');
 const img1 = document.getElementById("pac");
 const img2 = document.getElementById("fant");
-const img3 = document.getElementById("ladr");
+const img3 = document.getElementById("fant2");
+const img4 = document.getElementById("fant3");
+const img5 = document.getElementById("fant4");
+const img6 = document.getElementById("ladr");
 
 class Pacman {
     constructor({posicion, velocidad}) {
         this.cuerpo = 12;
         this.posicion = posicion;
         this.velocidad = velocidad;
+        this.rotation = 0;
     }
 
     Dibujar() {
+        c2d.save();
+        c2d.translate(this.posicion.x, this.posicion.y);
+        c2d.rotate(this.rotation);
+        c2d.translate(-this.posicion.x, -this.posicion.y);
         c2d.drawImage(img1, this.posicion.x-15, this.posicion.y-15,30,30);
+        c2d.beginPath()
+        c2d.closePath()
+        c2d.restore()
     }
 
     actualizar() {
@@ -24,17 +35,17 @@ class Pacman {
         this.posicion.y += this.velocidad.y;
     }
 }
-
 class Fantasma {
-    constructor({posicion, velocidad}) {
+    constructor({posicion, velocidad,img=img2}) {
         this.cuerpo = 12;
         this.posicion = posicion;
         this.velocidad = velocidad;
         this.Colisiones_anteriores = [];
+        this.img = img;
     }
 
     Dibujar2() {
-        c2d.drawImage(img2, this.posicion.x-15, this.posicion.y-15,30,30);
+        c2d.drawImage(this.img, this.posicion.x-15, this.posicion.y-15,30,30);
     }
 
     actualizar() {
@@ -48,6 +59,7 @@ class Monedas {
     constructor({posicion}) {
         this.cuerpo = 5;
         this.posicion = posicion;
+
     }
 
     Dibujar3() {
@@ -70,7 +82,7 @@ class Paredes {
     }
 
     Dibujar4() {
-        c2d.drawImage(img3, this.posicion.x, this.posicion.y,40,40);
+        c2d.drawImage(img6, this.posicion.x, this.posicion.y,40,40);
     }
 }
 
@@ -106,21 +118,27 @@ const fantasma =
                 x: Paredes.width * 8 + Paredes.width / 2,
                 y: Paredes.height * 8 + Paredes.height / 2
             },
-            velocidad: {x: -2, y: 0}
+            velocidad: {x: -2, y: 0},
+            img: img3
+
+
         }),
         new Fantasma({
             posicion: {
                 x: Paredes.width * 8 + Paredes.width / 2,
                 y: Paredes.height * 8 + Paredes.height / 2
             },
-            velocidad: {x: 2, y: 0}
+            velocidad: {x: 2, y: 0},
+            img: img4
         }),
         new Fantasma({
             posicion: {
                 x: Paredes.width * 8 + Paredes.width / 2,
                 y: Paredes.height * 8 + Paredes.height / 2
             },
-            velocidad: {x: 0, y: -2}
+            velocidad: {x: 0, y: -2},
+            img: img5
+
         })
     ];
 
@@ -462,6 +480,10 @@ function animacion() {
             fantasma.Colisiones_anteriores = []
         }
     })
+    if (pacman.velocidad.x > 0) pacman. rotation = 0
+    else if (pacman.velocidad.x < 0) pacman. rotation = Math.PI
+    else if (pacman.velocidad.y > 0) pacman. rotation = Math.PI / 2
+    else if (pacman.velocidad.y < 0) pacman. rotation = Math.PI * 1.5
 
 }
 
