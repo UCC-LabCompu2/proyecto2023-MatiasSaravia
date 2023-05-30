@@ -480,6 +480,8 @@ function animacion() {
             fantasma.Colisiones_anteriores = []
         }
     })
+
+    //Detecta en que direccion va el pacman y rota la imagen del pacman
     if (pacman.velocidad.x > 0) pacman. rotation = 0
     else if (pacman.velocidad.x < 0) pacman. rotation = Math.PI
     else if (pacman.velocidad.y > 0) pacman. rotation = Math.PI / 2
