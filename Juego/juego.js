@@ -10,44 +10,131 @@ const img4 = document.getElementById("fant3");
 const img5 = document.getElementById("fant4");
 const img6 = document.getElementById("ladr");
 
+/**
+ * Clase que representa a Pacman.
+ * @class
+ */
 class Pacman {
+    /**
+     * Constructor de la clase Pacman.
+     * @constructor
+     * @param {Object} posicion - La posición inicial de Pacman.
+     * @param {number} posicion.x - La coordenada x de la posición inicial.
+     * @param {number} posicion.y - La coordenada y de la posición inicial.
+     * @param {Object} velocidad - La velocidad de movimiento de Pacman.
+     * @param {number} velocidad.x - La componente x de la velocidad.
+     * @param {number} velocidad.y - La componente y de la velocidad.
+     */
     constructor({posicion, velocidad}) {
+        /**
+         * El tamaño del cuerpo de Pacman.
+         * @type {number}
+         */
         this.cuerpo = 12;
+        /**
+         * La posición actual de Pacman.
+         * @type {Object}
+         * @property {number} x - La coordenada x de la posición.
+         * @property {number} y - La coordenada y de la posición.
+         */
         this.posicion = posicion;
+        /**
+         * La velocidad de movimiento de Pacman.
+         * @type {Object}
+         * @property {number} x - La componente x de la velocidad.
+         * @property {number} y - La componente y de la velocidad.
+         */
         this.velocidad = velocidad;
-        this.rotation = 0;
+        /**
+         * La rotación actual de Pacman.
+         * @type {number}
+         */
+        this.rotacion = 0;
     }
 
+    /**
+     * Método para dibujar a Pacman.
+     */
     Dibujar() {
+        c2d.beginPath();
         c2d.save();
         c2d.translate(this.posicion.x, this.posicion.y);
-        c2d.rotate(this.rotation);
+        c2d.rotate(this.rotacion);
         c2d.translate(-this.posicion.x, -this.posicion.y);
-        c2d.drawImage(img1, this.posicion.x-15, this.posicion.y-15,30,30);
-        c2d.beginPath()
-        c2d.closePath()
-        c2d.restore()
+        c2d.drawImage(img1, this.posicion.x - 15, this.posicion.y - 15, 30, 30);
+        c2d.closePath();
+        c2d.restore();
     }
 
+    /**
+     * Método para actualizar la posición de Pacman y dibujarlo.
+     */
     actualizar() {
         this.Dibujar()
         this.posicion.x += this.velocidad.x;
         this.posicion.y += this.velocidad.y;
     }
 }
+
+/**
+ * Clase que representa a un Fantasma.
+ * @class
+ */
 class Fantasma {
-    constructor({posicion, velocidad,img=img2}) {
+    /**
+     * Constructor de la clase Fantasma.
+     * @constructor
+     * @param {Object} posicion - La posición inicial del Fantasma.
+     * @param {number} posicion.x - La coordenada x de la posición inicial.
+     * @param {number} posicion.y - La coordenada y de la posición inicial.
+     * @param {Object} velocidad - La velocidad de movimiento del Fantasma.
+     * @param {number} velocidad.x - La componente x de la velocidad.
+     * @param {number} velocidad.y - La componente y de la velocidad.
+     * @param {string} img - La imagen del Fantasma.
+     */
+    constructor({posicion, velocidad, img = img2}) {
+        /**
+         * El tamaño del cuerpo del Fantasma.
+         * @type {number}
+         */
         this.cuerpo = 12;
+        /**
+         * La posición actual del Fantasma.
+         * @type {Object}
+         * @property {number} x - La coordenada x de la posición.
+         * @property {number} y - La coordenada y de la posición.
+         */
         this.posicion = posicion;
+        /**
+         * La velocidad de movimiento del Fantasma.
+         * @type {Object}
+         * @property {number} x - La componente x de la velocidad.
+         * @property {number} y - La componente y de la velocidad.
+         */
         this.velocidad = velocidad;
+        /**
+         * Las colisiones anteriores del Fantasma.
+         * @type {Array}
+         */
         this.Colisiones_anteriores = [];
+        /**
+         * La imagen del Fantasma.
+         * @type {string}
+         */
         this.img = img;
     }
 
+    /**
+     * Método para dibujar al Fantasma.
+     */
     Dibujar2() {
-        c2d.drawImage(this.img, this.posicion.x-15, this.posicion.y-15,30,30);
+        c2d.drawImage(this.img, this.posicion.x - 15, this.posicion.y - 15, 30, 30);
+        c2d.closePath();
     }
 
+    /**
+     * Método para actualizar la posición del Fantasma y dibujarlo.
+     */
     actualizar() {
         this.Dibujar2()
         this.posicion.x += this.velocidad.x;
@@ -55,13 +142,37 @@ class Fantasma {
     }
 }
 
+/**
+ * Clase que representa las Monedas.
+ * @class
+ */
 class Monedas {
+    /**
+     * Constructor de la clase Monedas.
+     * @constructor
+     * @param {Object} posicion - La posición de las Monedas.
+     * @param {number} posicion.x - La coordenada x de la posición.
+     * @param {number} posicion.y - La coordenada y de la posición.
+     */
     constructor({posicion}) {
+        /**
+         * El tamaño del cuerpo de las Monedas.
+         * @type {number}
+         */
         this.cuerpo = 5;
+        /**
+         * La posición de las Monedas.
+         * @type {Object}
+         * @property {number} x - La coordenada x de la posición.
+         * @property {number} y - La coordenada y de la posición.
+         */
         this.posicion = posicion;
 
     }
 
+    /**
+     * Método para dibujar las Monedas en el lienzo.
+     */
     Dibujar3() {
         c2d.beginPath();
         c2d.arc(this.posicion.x, this.posicion.y, this.cuerpo, 0, Math.PI * 2);
@@ -71,18 +182,54 @@ class Monedas {
     }
 }
 
+/**
+ * Clase que representa las Paredes.
+ * @class
+ */
 class Paredes {
+    /**
+     * El ancho predeterminado de las Paredes.
+     * @type {number}
+     */
     static width = 40;
+    /**
+     * La altura predeterminada de las Paredes.
+     * @type {number}
+     */
     static height = 40;
 
+    /**
+     * Constructor de la clase Paredes.
+     * @constructor
+     * @param {Object} posicion - La posición de las Paredes.
+     * @param {number} posicion.x - La coordenada x de la posición.
+     * @param {number} posicion.y - La coordenada y de la posición.
+     */
     constructor({posicion}) {
+        /**
+         * La posición de las Paredes.
+         * @type {Object}
+         * @property {number} x - La coordenada x de la posición.
+         * @property {number} y - La coordenada y de la posición.
+         */
         this.posicion = posicion;
+        /**
+         * El ancho de las Paredes.
+         * @type {number}
+         */
         this.width = 40;
+        /**
+         * La altura de las Paredes.
+         * @type {number}
+         */
         this.height = 40;
     }
 
+    /**
+     * Método para dibujar las Paredes.
+     */
     Dibujar4() {
-        c2d.drawImage(img6, this.posicion.x, this.posicion.y,40,40);
+        c2d.drawImage(img6, this.posicion.x, this.posicion.y, 40, 40);
     }
 }
 
@@ -99,9 +246,9 @@ const pacman = new Pacman({
         x: 0,
         y: 0
     }
-})
+});
 /**
- *Hace que los fantasmas tengan una posicion y velocidad predeterminada
+ *Hace que los fantasmas tengan una posicion y velocidad predeterminada.
  *@method fantasma
  */
 const fantasma =
@@ -141,8 +288,10 @@ const fantasma =
 
         })
     ];
-
-//Esqueleto del laberinto (#) son las paredes,(º) son las monedas y el espacio vacio es donde empieza el pacman
+/**
+ * Esqueleto del laberinto (#) son las paredes,(º) son las monedas y el espacio vacio es donde empieza el pacman.
+ * @type {string[][]}
+ */
 const laberinto = [
     ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
     ['#', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', '#'],
@@ -161,12 +310,12 @@ const laberinto = [
     ['#', 'º', '#', 'º', '#', '#', 'º', '#', 'º', '#', 'º', '#', '#', 'º', '#', 'º', '#'],
     ['#', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', 'º', '#'],
     ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#']
-]
+];
 
 const moneda = [];
 const paredes = [];
 /**
- * Creacion del laberinto
+ * Creacion del laberinto.
  * @method laberinto
  */
 laberinto.forEach((row, i) => {
@@ -190,13 +339,13 @@ laberinto.forEach((row, i) => {
                 )
                 break
         }
-    })
+    });
 });
 
 //Controles
 let ul_control = '';
 /**
- * Hace que los controles W,A,S,D sean falsas por predeterminado
+ * Hace que los controles W,A,S,D sean falsas por predeterminado.
  * @method controles
  */
 const controles = {
@@ -204,9 +353,9 @@ const controles = {
     s: {presionado: false},
     a: {presionado: false},
     d: {presionado: false}
-}
+};
 
-//para saber que tecla presionaste
+//para saber que tecla presionaste.
 addEventListener('keydown', ({key}) => {
     switch (key) {
         case 'w':
@@ -226,9 +375,9 @@ addEventListener('keydown', ({key}) => {
             ul_control = 'd'
             break
     }
-})
+});
 
-//para frenar cuando se cambia de tecla
+//para frenar cuando se cambia de tecla.
 addEventListener('keyup', ({key}) => {
     switch (key) {
         case 'w':
@@ -244,13 +393,13 @@ addEventListener('keyup', ({key}) => {
             controles.d.presionado = false
             break
     }
-})
+});
 
 /**
- * Detecta cuando un circulo choca contra una pared
+ * Detecta cuando un circulo choca contra una pared.
  * @method circulo_colisiona
- * @param {int} posicion, velocidad y cuerpo - posicion: posicion del circulo - velocidad: rapidez del circulo - cuerpo: tamaño del circulo
- * @param {int} posicion, alto y ancho - posicion: posicion de las paredes - alto y ancho: tamaño del cuadrado
+ * @param {int} posicion, velocidad y cuerpo - posición: posición del circulo - velocidad: rapidez del circulo - cuerpo: tamaño del circulo
+ * @param {int} posicion, alto y ancho - posición: posición de las paredes - alto y ancho: tamaño del cuadrado
  * @return Devuelve contra que pared choco el circulo
  */
 function circulo_colisiona({circulo, cuadrado}) {
@@ -265,16 +414,16 @@ let puntos = 0;
 let animacion2;
 
 /**
- * Desarrollo del juego
+ * Desarrollo del juego.
  * @method animacion
  * @return Devuelve los posibles caminos que tomara el fantasma
  */
 function animacion() {
     animacion2 = requestAnimationFrame(animacion)
-    // Limpia los movimientos anteriores del pacman
+    // Limpia los movimientos anteriores del pacman.
     c2d.clearRect(0, 0, canvas.width, canvas.height)
     pacman.actualizar()
-    //Detecta la colision con la pared en direccion -Y
+    //Detecta la colision con la pared en direccion -Y.
     if (controles.w.presionado && ul_control === 'w') {
         for (let i = 0; i < paredes.length; i++) {
             const Paredes = paredes[i]
@@ -283,17 +432,17 @@ function animacion() {
                 cuadrado: Paredes
             })
             ) {
-                pacman.velocidad.y = 0;
+                pacman.velocidad.y = 0
                 break
             } else {
-                pacman.velocidad.y = -2;
+                pacman.velocidad.y = -2
             }
         }
 
 
     }
 
-    //Detecta la colision con la pared en direccion Y
+    //Detecta la colision con la pared en direccion Y.
     else if (controles.s.presionado && ul_control === 's') {
         for (let i = 0; i < paredes.length; i++) {
             const Paredes = paredes[i]
@@ -302,15 +451,15 @@ function animacion() {
                 cuadrado: Paredes
             })
             ) {
-                pacman.velocidad.y = 0;
+                pacman.velocidad.y = 0
                 break
             } else {
-                pacman.velocidad.y = 2;
+                pacman.velocidad.y = 2
             }
         }
     }
 
-    //Detecta la colision con la pared en direccion -X
+    //Detecta la colision con la pared en direccion -X.
     else if (controles.a.presionado && ul_control === 'a') {
         for (let i = 0; i < paredes.length; i++) {
             const Paredes = paredes[i]
@@ -319,16 +468,16 @@ function animacion() {
                 cuadrado: Paredes
             })
             ) {
-                pacman.velocidad.x = 0;
+                pacman.velocidad.x = 0
                 break
             } else {
-                pacman.velocidad.x = -2;
+                pacman.velocidad.x = -2
             }
         }
 
     }
 
-    //Detecta la colision con la pared en direccion X
+    //Detecta la colision con la pared en direccion X.
     else if (controles.d.presionado && ul_control === 'd') {
         for (let i = 0; i < paredes.length; i++) {
             const Paredes = paredes[i]
@@ -337,16 +486,16 @@ function animacion() {
                 cuadrado: Paredes
             })
             ) {
-                pacman.velocidad.x = 0;
+                pacman.velocidad.x = 0
                 break
             } else {
-                pacman.velocidad.x = 2;
+                pacman.velocidad.x = 2
             }
         }
     }
 
     /**
-     * Detecta las monedas, elimina las monedas e incremento del puntaje
+     * Detecta las monedas, elimina las monedas e incremento del puntaje.
      * @method moneda
      */
     moneda.forEach((monedas, i) => {
@@ -357,10 +506,10 @@ function animacion() {
             puntos += 5;
             C_puntos.innerHTML = puntos;
         }
-    })
+    });
 
     /**
-     * Detecta la colision del pacman con una pared (Causa que la velocidad se modifique a 0)
+     * Detecta la colision del pacman con una pared (Causa que la velocidad se modifique a 0).
      * @method paredes
      */
     paredes.forEach((Paredes) => {
@@ -370,13 +519,13 @@ function animacion() {
             cuadrado: Paredes
         })
         ) {
-            pacman.velocidad.x = 0;
-            pacman.velocidad.y = 0;
+            pacman.velocidad.x = 0
+            pacman.velocidad.y = 0
         }
-    })
+    });
 
     /**
-     * Detecta la colision entre fantasma y pacman
+     * Detecta la colision entre fantasma y pacman.
      * @method fantasma
      */
     fantasma.forEach(fantasma => {
@@ -398,9 +547,9 @@ function animacion() {
             alert("Has comido todos los pac-dots");
         }
 
-        const colision = []
+        const colision = [];
         /**
-         * Detecta cuando colisionan con las paredes los fantasmas
+         * Detecta cuando colisionan con las paredes los fantasmas.
          * @method paredes
          */
         paredes.forEach((Paredes) => {
@@ -432,32 +581,37 @@ function animacion() {
             ) {
                 colision.push('der')
             }
-        })
+        });
 
-        //Guarda la posicion anterior del fantasma
+        //Guarda la posicion anterior del fantasma.
         if (colision.length > fantasma.Colisiones_anteriores.length) {
             fantasma.Colisiones_anteriores = colision
         }
-        //Detecta posibles caminos de los fantasmas
+        //Detecta posibles caminos de los fantasmas.
         if (JSON.stringify(colision) !== JSON.stringify(fantasma.Colisiones_anteriores)) {
-            if (fantasma.velocidad.y < 0) fantasma.Colisiones_anteriores.push('arriba')
-            else if (fantasma.velocidad.y > 0) fantasma.Colisiones_anteriores.push('abajo')
-            else if (fantasma.velocidad.x < 0) fantasma.Colisiones_anteriores.push('izq')
-            else if (fantasma.velocidad.x > 0) fantasma.Colisiones_anteriores.push('der')
+            if (fantasma.velocidad.y < 0) {
+                fantasma.Colisiones_anteriores.push('arriba')
+            } else if (fantasma.velocidad.y > 0) {
+                fantasma.Colisiones_anteriores.push('abajo')
+            } else if (fantasma.velocidad.x < 0) {
+                fantasma.Colisiones_anteriores.push('izq')
+            } else if (fantasma.velocidad.x > 0) {
+                fantasma.Colisiones_anteriores.push('der')
+            }
 
             /**
-             * Hace que los fantasmas vean que direccion pueden tomar
+             * Hace que los fantasmas vean que direccion pueden tomar.
              * @method caminos
              * @return si no hay colision
              */
             const caminos = fantasma.Colisiones_anteriores.filter((colision1) => {
                 return !colision.includes(colision1)
-            })
+            });
             /**
-             * Hace que la direccion que toman los fantasmas sean aleatoria
+             * Hace que la direccion que toman los fantasmas sean aleatoria.
              * @method direccion
              */
-            const direccion = caminos[Math.floor(Math.random() * caminos.length)]
+            const direccion = caminos[Math.floor(Math.random() * caminos.length)];
             switch (direccion) {
                 case'arriba':
                     fantasma.velocidad.x = 0;
@@ -479,13 +633,18 @@ function animacion() {
             }
             fantasma.Colisiones_anteriores = []
         }
-    })
+    });
 
-    //Detecta en que direccion va el pacman y rota la imagen del pacman
-    if (pacman.velocidad.x > 0) pacman. rotation = 0
-    else if (pacman.velocidad.x < 0) pacman. rotation = Math.PI
-    else if (pacman.velocidad.y > 0) pacman. rotation = Math.PI / 2
-    else if (pacman.velocidad.y < 0) pacman. rotation = Math.PI * 1.5
+    //Detecta en que direccion va el pacman y rota la imagen del pacman.
+    if (pacman.velocidad.x > 0) {
+        pacman.rotacion = 0
+    } else if (pacman.velocidad.x < 0) {
+        pacman.rotacion = Math.PI
+    } else if (pacman.velocidad.y > 0) {
+        pacman.rotacion = Math.PI / 2
+    } else if (pacman.velocidad.y < 0) {
+        pacman.rotacion = Math.PI * 1.5
+    }
 
 }
 

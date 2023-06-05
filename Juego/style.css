@@ -18,20 +18,24 @@ html, body {
     text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 3px 3px 0 white;
 
 }
-.titulo{
+
+.titulo {
     text-align: center;
     transition: 1s;
 }
-.titulo2{
+
+.titulo2 {
     margin-right: 80px;
     text-align: center;
     transition: 1s;
 }
-.titulo:hover{
+
+.titulo:hover {
     font-size: xxx-large;
     cursor: pointer;
 
 }
+
 .menu {
     width: 500px;
     height: 500px;
@@ -42,34 +46,41 @@ html, body {
     border-radius: 50px;
 
 }
-.fantasma{
+
+.fantasma {
     width: 50px;
     height: 50px;
 }
-.pacman{
+
+.pacman {
     width: 50px;
     height: 50px;
 }
-.moneda{
+
+.moneda {
     margin-bottom: 15px;
     width: 20px;
     height: 20px;
 }
-.icono{
+
+.icono {
     width: 30px;
     height: 30px;
 }
-.ctl{
+
+.ctl {
     margin-bottom: 40px;
 }
-.flechas{
+
+.flechas {
     padding-left: 25px;
     float: left;
     width: 40px;
     height: 40px;
     transition: 1s;
 }
-.flechas:hover{
+
+.flechas:hover {
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -84,17 +95,15 @@ html, body {
     font-size: 1.2em;
     border-radius: 70px;
     text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 3px 3px 0 white;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    transition: 1s;
-
-
-;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 1s;;
 }
-.boton2{
+
+.boton2 {
     float: left;
     padding: 5px 20px 5px 20px;
     display: inline-block;
-    margin:0;
+    margin: 0;
     background-color: #6c6c6c;
     border: 2px solid #000000;
     color: #ffffff;
@@ -103,49 +112,58 @@ html, body {
 }
 
 
-.boton:hover, .boton2:hover{
+.boton:hover, .boton2:hover {
     cursor: pointer;
-    background-image: radial-gradient(#ae40ff, #3b0a65, #000000 );
+    background-image: radial-gradient(#ae40ff, #3b0a65, #000000);
     padding: 10px 60px 10px 60px;
     box-shadow: 0 8px 16px 0 rgb(151, 0, 255), 0 6px 20px 0 rgb(151, 0, 255);
 }
+
 .boton2:hover {
     padding: 10px 20px 10px 20px;
 }
-a{
+
+a {
     text-decoration: none;
     color: white;
 }
+
 .link {
     color: #000000;
     transition: 1s;
     text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff, 3px 3px 0 #ffffff;
 }
-.link:hover{
+
+.link:hover {
     font-size: larger;
 }
-h2{
+
+h2 {
     font-family: 'Press Start 2P', cursive;
     font-size: xx-large;
     color: #ffffff;
     text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 3px 3px 0 white;
 }
+
 h3 {
     font-size: x-large;
     color: #ffffff;
     margin-top: 20px;
     padding-right: 40px;
 }
+
 h4 {
-    padding-top:0;
+    padding-top: 0;
     padding-right: 100px;
 }
+
 .inf {
     margin: auto 15px auto 15px;
     padding-top: 0;
 }
+
 p {
-    padding-top:1px;
+    padding-top: 1px;
     color: #ffffff;
     margin-top: 1px;
 }
@@ -160,31 +178,37 @@ p {
 
 #autor {
     text-align: center;
-    padding-top:10px;
+    padding-top: 10px;
     color: rgba(255, 255, 255, 0.53);
     font-size: 12px;
     margin-top: 1%;
 }
-@media(max-width: 950px) {
-    .menu{
+
+@media (max-width: 950px) {
+    .menu {
         width: 350px;
         height: 500px;
         margin: auto;
         text-align: center;
     }
-    .boton{
+
+    .boton {
         padding: 10px 25px 10px 25px;
     }
-    .boton:hover{
+
+    .boton:hover {
         padding: 10px 30px 10px 30px;
     }
-    body{
+
+    body {
         background-size: 100% 100%;
     }
-    h2{
+
+    h2 {
         font-size: x-large;
     }
-    p{
+
+    p {
         font-size: smaller;
     }
 
