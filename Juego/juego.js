@@ -9,49 +9,9 @@ const img3 = document.getElementById("fant2");
 const img4 = document.getElementById("fant3");
 const img5 = document.getElementById("fant4");
 const img6 = document.getElementById("ladr");
-
-// Definir la variable velocidad2
 let velocidad2 = 0;
-
-/**
- * Pide al usuario que elija un nivel y realiza las acciones correspondientes en la velocidad de los fantasmas.
- */
-function pedirNivel() {
-    /**
-     * @type {string} nivel - El nivel elegido por el usuario.
-     */
-    var nivel = prompt("Por favor, elige un nivel: [Facil / Normal / Dificil]").toLowerCase();
-
-    while (nivel !== "facil" && nivel !== "normal" && nivel !== "dificil") {
-        nivel = prompt("Nivel inválido. Por favor, elige un nivel válido: [Fácil / Normal / Difícil]").toLowerCase();
-    }
-
-    /**
-     * Realiza las acciones correspondientes al nivel elegido por el usuario.
-     * @param {string} nivel - El nivel elegido por el usuario.
-     */
-    function realizarAcciones(nivel) {
-        if (nivel === "facil") {
-            // Acciones para el nivel fácil
-            console.log("Has elegido el nivel fácil.");
-            velocidad2 = 1;
-        } else if (nivel === "normal") {
-            // Acciones para el nivel normal
-            console.log("Has elegido el nivel normal.");
-            velocidad2 = 2;
-        } else if (nivel === "dificil") {
-            // Acciones para el nivel difícil
-            console.log("Has elegido el nivel difícil.");
-            velocidad2 = 2.5;
-        }
-    }
-
-    realizarAcciones(nivel);
-}
-
 // Llama a la función para iniciar el proceso de pedir al usuario que elija un nivel.
 pedirNivel();
-
 
 /**
  * Clase que representa a Pacman.
@@ -706,3 +666,38 @@ function animacion() {
 
 animacion()
 
+/**
+ * Pide al usuario que elija un nivel y realiza las acciones correspondientes en la velocidad de los fantasmas.
+ */
+function pedirNivel() {
+    /**
+     * @type {string} nivel - El nivel elegido por el usuario.
+     */
+    var nivel = prompt("Por favor, elige un nivel: [Facil / Normal / Dificil]").toLowerCase();
+
+    while (nivel !== "facil" && nivel !== "normal" && nivel !== "dificil") {
+        nivel = prompt("Nivel inválido. Por favor, elige un nivel válido: [Fácil / Normal / Difícil]").toLowerCase();
+    }
+
+    /**
+     * Realiza las acciones correspondientes al nivel elegido por el usuario.
+     * @param {string} nivel - El nivel elegido por el usuario.
+     */
+    function realizarAcciones(nivel) {
+        if (nivel === "facil") {
+            // Acciones para el nivel fácil
+            console.log("Has elegido el nivel fácil.");
+            velocidad2 = 1;
+        } else if (nivel === "normal") {
+            // Acciones para el nivel normal
+            console.log("Has elegido el nivel normal.");
+            velocidad2 = 2;
+        } else if (nivel === "dificil") {
+            // Acciones para el nivel difícil
+            console.log("Has elegido el nivel difícil.");
+            velocidad2 = 2.5;
+        }
+    }
+
+    realizarAcciones(nivel);
+}
