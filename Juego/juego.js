@@ -99,13 +99,11 @@ class Pacman {
      * Método para dibujar a Pacman.
      */
     Dibujar() {
-        c2d.beginPath();
         c2d.save();
         c2d.translate(this.posicion.x, this.posicion.y);
         c2d.rotate(this.rotacion);
         c2d.translate(-this.posicion.x, -this.posicion.y);
         c2d.drawImage(img1, this.posicion.x - 15, this.posicion.y - 15, 30, 30);
-        c2d.closePath();
         c2d.restore();
     }
 
@@ -172,7 +170,6 @@ class Fantasma {
      */
     Dibujar2() {
         c2d.drawImage(this.img, this.posicion.x - 15, this.posicion.y - 15, 30, 30);
-        c2d.closePath();
     }
 
     /**
@@ -272,6 +269,7 @@ class Paredes {
      * Método para dibujar las Paredes.
      */
     Dibujar4() {
+        c2d.beginPath()
         c2d.drawImage(img6, this.posicion.x, this.posicion.y, 40, 40);
     }
 }
@@ -439,11 +437,22 @@ addEventListener('keyup', ({key}) => {
 });
 
 /**
- * Detecta cuando un circulo choca contra una pared.
- * @method circulo_colisiona
- * @param {int} posicion, velocidad y cuerpo - posición: posición del circulo - velocidad: rapidez del circulo - cuerpo: tamaño del circulo
- * @param {int} posicion, alto y ancho - posición: posición de las paredes - alto y ancho: tamaño del cuadrado
- * @return Devuelve contra que pared choco el circulo
+ * Comprueba si un círculo colisiona con un cuadrado.
+ * @param {Object} circulo - El objeto del círculo.
+ * @param {number} circulo.cuerpo - El radio del círculo.
+ * @param {Object} circulo.posicion - La posición del círculo.
+ * @param {number} circulo.posicion.x - La coordenada x de la posición del círculo.
+ * @param {number} circulo.posicion.y - La coordenada y de la posición del círculo.
+ * @param {Object} circulo.velocidad - La velocidad del círculo.
+ * @param {number} circulo.velocidad.x - La velocidad en el eje x del círculo.
+ * @param {number} circulo.velocidad.y - La velocidad en el eje y del círculo.
+ * @param {Object} cuadrado - El objeto del cuadrado.
+ * @param {number} cuadrado.height - La altura del cuadrado.
+ * @param {number} cuadrado.width - El ancho del cuadrado.
+ * @param {Object} cuadrado.posicion - La posición del cuadrado.
+ * @param {number} cuadrado.posicion.x - La coordenada x de la posición del cuadrado.
+ * @param {number} cuadrado.posicion.y - La coordenada y de la posición del cuadrado.
+ * @returns {boolean} Devuelve true si hay colisión, de lo contrario devuelve false.
  */
 function circulo_colisiona({circulo, cuadrado}) {
     const padding = Paredes.width / 2 - circulo.cuerpo - 1;
@@ -462,6 +471,10 @@ let animacion2;
  * @return Devuelve los posibles caminos que tomara el fantasma
  */
 function animacion() {
+    /**
+     * Inicia una nueva animación y llama a la función 'animacion'.
+     * @type {number} animacion2 - Identificador de la animación.
+     */
     animacion2 = requestAnimationFrame(animacion)
     // Limpia los movimientos anteriores del pacman.
     c2d.clearRect(0, 0, canvas.width, canvas.height)
