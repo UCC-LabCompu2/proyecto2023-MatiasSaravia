@@ -10,6 +10,49 @@ const img4 = document.getElementById("fant3");
 const img5 = document.getElementById("fant4");
 const img6 = document.getElementById("ladr");
 
+// Definir la variable velocidad2
+let velocidad2 = 0;
+
+/**
+ * Pide al usuario que elija un nivel y realiza las acciones correspondientes en la velocidad de los fantasmas.
+ */
+function pedirNivel() {
+    /**
+     * @type {string} nivel - El nivel elegido por el usuario.
+     */
+    var nivel = prompt("Por favor, elige un nivel: [Facil / Normal / Dificil]").toLowerCase();
+
+    while (nivel !== "facil" && nivel !== "normal" && nivel !== "dificil") {
+        nivel = prompt("Nivel inválido. Por favor, elige un nivel válido: [Fácil / Normal / Difícil]").toLowerCase();
+    }
+
+    /**
+     * Realiza las acciones correspondientes al nivel elegido por el usuario.
+     * @param {string} nivel - El nivel elegido por el usuario.
+     */
+    function realizarAcciones(nivel) {
+        if (nivel === "facil") {
+            // Acciones para el nivel fácil
+            console.log("Has elegido el nivel fácil.");
+            velocidad2 = 1;
+        } else if (nivel === "normal") {
+            // Acciones para el nivel normal
+            console.log("Has elegido el nivel normal.");
+            velocidad2 = 2;
+        } else if (nivel === "dificil") {
+            // Acciones para el nivel difícil
+            console.log("Has elegido el nivel difícil.");
+            velocidad2 = 2.5;
+        }
+    }
+
+    realizarAcciones(nivel);
+}
+
+// Llama a la función para iniciar el proceso de pedir al usuario que elija un nivel.
+pedirNivel();
+
+
 /**
  * Clase que representa a Pacman.
  * @class
@@ -257,7 +300,7 @@ const fantasma =
             x: Paredes.width * 8 + Paredes.width / 2,
             y: Paredes.height * 8 + Paredes.height / 2
         },
-        velocidad: {x: 0, y: 2}
+        velocidad: {x: 0, y: velocidad2}
 
     }),
         new Fantasma({
@@ -265,7 +308,7 @@ const fantasma =
                 x: Paredes.width * 8 + Paredes.width / 2,
                 y: Paredes.height * 8 + Paredes.height / 2
             },
-            velocidad: {x: -2, y: 0},
+            velocidad: {x: -velocidad2, y: 0},
             img: img3
 
 
@@ -275,7 +318,7 @@ const fantasma =
                 x: Paredes.width * 8 + Paredes.width / 2,
                 y: Paredes.height * 8 + Paredes.height / 2
             },
-            velocidad: {x: 2, y: 0},
+            velocidad: {x: velocidad2, y: 0},
             img: img4
         }),
         new Fantasma({
@@ -283,7 +326,7 @@ const fantasma =
                 x: Paredes.width * 8 + Paredes.width / 2,
                 y: Paredes.height * 8 + Paredes.height / 2
             },
-            velocidad: {x: 0, y: -2},
+            velocidad: {x: 0, y: -velocidad2},
             img: img5
 
         })
@@ -554,28 +597,28 @@ function animacion() {
          */
         paredes.forEach((Paredes) => {
             if (!colision.includes('arriba') && circulo_colisiona({
-                circulo: {...fantasma, velocidad: {x: 0, y: -2}},
+                circulo: {...fantasma, velocidad: {x: 0, y: -velocidad2}},
                 cuadrado: Paredes
             })
             ) {
                 colision.push('arriba')
             }
             if (!colision.includes('abajo') && circulo_colisiona({
-                circulo: {...fantasma, velocidad: {x: 0, y: 2}},
+                circulo: {...fantasma, velocidad: {x: 0, y: velocidad2}},
                 cuadrado: Paredes
             })
             ) {
                 colision.push('abajo')
             }
             if (!colision.includes('izq') && circulo_colisiona({
-                circulo: {...fantasma, velocidad: {x: -2, y: 0}},
+                circulo: {...fantasma, velocidad: {x: -velocidad2, y: 0}},
                 cuadrado: Paredes
             })
             ) {
                 colision.push('izq')
             }
             if (!colision.includes('der') && circulo_colisiona({
-                circulo: {...fantasma, velocidad: {x: 2, y: 0}},
+                circulo: {...fantasma, velocidad: {x: velocidad2, y: 0}},
                 cuadrado: Paredes
             })
             ) {
@@ -615,18 +658,18 @@ function animacion() {
             switch (direccion) {
                 case'arriba':
                     fantasma.velocidad.x = 0;
-                    fantasma.velocidad.y = -2;
+                    fantasma.velocidad.y = -velocidad2;
                     break
                 case'abajo':
                     fantasma.velocidad.x = 0;
-                    fantasma.velocidad.y = 2;
+                    fantasma.velocidad.y = velocidad2;
                     break
                 case'izq':
-                    fantasma.velocidad.x = -2;
+                    fantasma.velocidad.x = -velocidad2;
                     fantasma.velocidad.y = 0;
                     break
                 case'der':
-                    fantasma.velocidad.x = 2;
+                    fantasma.velocidad.x = velocidad2;
                     fantasma.velocidad.y = 0;
                     break
 
