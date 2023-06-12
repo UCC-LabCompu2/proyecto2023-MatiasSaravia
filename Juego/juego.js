@@ -9,6 +9,8 @@ const img3 = document.getElementById("fant2");
 const img4 = document.getElementById("fant3");
 const img5 = document.getElementById("fant4");
 const img6 = document.getElementById("ladr");
+
+mostrarNombre();
 let velocidad2 = 0;
 // Llama a la función para iniciar el proceso de pedir al usuario que elija un nivel.
 pedirNivel();
@@ -438,7 +440,7 @@ function animacion() {
     animacion2 = requestAnimationFrame(animacion)
     // Limpia los movimientos anteriores del pacman.
     c2d.clearRect(0, 0, canvas.width, canvas.height)
-    pacman.actualizar()
+    pacman.actualizar();
     //Detecta la colision con la pared en direccion -Y.
     if (controles.w.presionado && ul_control === 'w') {
         for (let i = 0; i < paredes.length; i++) {
@@ -515,7 +517,7 @@ function animacion() {
      * @method moneda
      */
     moneda.forEach((monedas, i) => {
-        monedas.Dibujar3()
+        monedas.Dibujar3();
         if (Math.hypot(monedas.posicion.x - pacman.posicion.x,
             monedas.posicion.y - pacman.posicion.y) < monedas.cuerpo + pacman.cuerpo) {
             moneda.splice(i, 1)
@@ -529,7 +531,7 @@ function animacion() {
      * @method paredes
      */
     paredes.forEach((Paredes) => {
-        Paredes.Dibujar4()
+        Paredes.Dibujar4();
         if (circulo_colisiona({
             circulo: pacman,
             cuadrado: Paredes
@@ -545,7 +547,7 @@ function animacion() {
      * @method fantasma
      */
     fantasma.forEach(fantasma => {
-        fantasma.actualizar()
+        fantasma.actualizar();
 
         //Condicion para perder
         if (
@@ -553,14 +555,35 @@ function animacion() {
                 fantasma.posicion.x - pacman.posicion.x,
                 fantasma.posicion.y - pacman.posicion.y) < fantasma.cuerpo + pacman.cuerpo) {
             cancelAnimationFrame(animacion2)
-            alert("!!! Game Over ¡¡¡");
-            alert("Un fantasma te a pillado");
+            if (velocidad2===1){
+                alert("!!! Game Over Dificultad Facil ¡¡¡");
+                alert("Un fantasma te a pillado");
+            }
+            else if (velocidad2===2){
+                alert("!!! Game Over Dificultad Normal ¡¡¡");
+                alert("Un fantasma te a pillado");
+            }
+            else if (velocidad2===2.5){
+                alert("!!! Game Over Dificultad Dificil ¡¡¡");
+                alert("Un fantasma te a pillado");
+            }
         }
         //Condicion para ganar
         if (moneda.length === 0) {
             cancelAnimationFrame(animacion2)
-            alert("!!! You Win ¡¡¡");
-            alert("Has comido todos los pac-dots");
+            if (velocidad2===1){
+                alert("!!! You Win Dificultad Facil ¡¡¡");
+                alert ("Has comido todos los pac-dots");
+            }
+            else if (velocidad2===2){
+                alert("!!! You Win Dificultad Normal ¡¡¡");
+                alert ("Has comido todos los pac-dots");
+            }
+            else if (velocidad2===2.5){
+                alert("!!! You Win Dificultad Dificil ¡¡¡");
+                alert ("Has comido todos los pac-dots");
+            }
+
         }
 
         const colision = [];
@@ -664,7 +687,7 @@ function animacion() {
 
 }
 
-animacion()
+animacion();
 
 /**
  * Pide al usuario que elija un nivel y realiza las acciones correspondientes en la velocidad de los fantasmas.
@@ -700,4 +723,9 @@ function pedirNivel() {
     }
 
     realizarAcciones(nivel);
+}
+function mostrarNombre() {
+    const nombre = prompt("Ingresa tu nombre:");
+    const nombreSpan = document.getElementById("nombreSpan");
+    nombreSpan.innerText = nombre;
 }
