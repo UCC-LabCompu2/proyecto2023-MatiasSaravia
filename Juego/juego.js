@@ -9,7 +9,7 @@ const img3 = document.getElementById("fant2");
 const img4 = document.getElementById("fant3");
 const img5 = document.getElementById("fant4");
 const img6 = document.getElementById("ladr");
-
+// Llama a la función para iniciar el proceso de pedir al usuario que nos ingrese su nombre.
 mostrarNombre();
 let velocidad2 = 0;
 // Llama a la función para iniciar el proceso de pedir al usuario que elija un nivel.
@@ -724,7 +724,11 @@ function pedirNivel() {
 
     realizarAcciones(nivel);
 }
+/**
+ * Muestra el nombre del usuario.
+ */
 function mostrarNombre() {
+    /** @type {string} */
     const nombre = prompt("Ingresa tu nombre:");
     const nombreSpan = document.getElementById("nombreSpan");
     nombreSpan.innerText = nombre;
